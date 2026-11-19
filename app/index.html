@@ -3,23 +3,94 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
-<link rel="stylesheet" href="style.css">
+<title>Leonida Atlas — GTA VI Trophy Guide &amp; Tracker</title>
+<link rel="stylesheet" href="css/base.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header id="topbar">
+  <div class="brand">
+    <h1>Leonida Atlas</h1>
+    <p class="tagline">Grand Theft Auto VI &middot; PlayStation 5 trophy guide &amp; tracker &middot; works fully offline</p>
+  </div>
+  <div class="progress-box" aria-live="polite">
+    <p id="earned-count" class="earned-count">0 of 55</p>
+    <div class="bar" role="progressbar" aria-label="Trophies earned"><div id="progress-fill" class="bar-fill"></div></div>
+    <p id="grade-counts" class="grade-counts"></p>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
-<script type="module" src="app.js"></script>
+
+<nav id="tabs" aria-label="Views">
+  <button type="button" class="tab is-active" data-view="checklist">Checklist</button>
+  <button type="button" class="tab" data-view="roadmap">Roadmap</button>
+  <button type="button" class="tab" data-view="missables">Missables</button>
+  <button type="button" class="tab" data-view="settings">Settings &amp; data</button>
+</nav>
+
+<section id="filters" aria-label="Filters">
+  <div id="kind-chips" class="chips" role="group" aria-label="Filter by kind">
+    <button type="button" class="chip is-active" data-kind="all">All</button>
+    <button type="button" class="chip" data-kind="story">Story</button>
+    <button type="button" class="chip" data-kind="missable">Missable</button>
+    <button type="button" class="chip" data-kind="collectibles">Collectibles</button>
+    <button type="button" class="chip" data-kind="activities">Activities</button>
+    <button type="button" class="chip" data-kind="online">Online</button>
+  </div>
+  <label>Grade
+    <select id="grade-filter">
+      <option value="all">All grades</option>
+      <option value="platinum">Platinum</option>
+      <option value="gold">Gold</option>
+      <option value="silver">Silver</option>
+      <option value="bronze">Bronze</option>
+    </select>
+  </label>
+  <label>Status
+    <select id="status-filter">
+      <option value="all">All</option>
+      <option value="todo">To do</option>
+      <option value="earned">Earned</option>
+    </select>
+  </label>
+  <label class="search-label">Search
+    <input id="search-box" type="search" placeholder="Name or keyword…" autocomplete="off">
+  </label>
+</section>
+
+<main>
+  <section id="view-checklist" class="view">
+    <div class="layout">
+      <div class="list-pane">
+        <p id="online-note" class="note" hidden>The official PlayStation list contains no online trophies — the Online filter is empty by design. All 55 trophies are offline.</p>
+        <p id="result-count" class="note"></p>
+        <ul id="trophy-list" class="trophy-list"></ul>
+      </div>
+      <aside id="detail-pane" class="detail-pane" aria-live="polite">
+        <p class="note">Select a trophy to read its full guide and sources.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="view-roadmap" class="view" hidden>
+    <h2>Roadmap to the platinum</h2>
+    <p class="note">Four stages, in order. Finish the story with its watch-outs flagged, clear the stranger strands, grind Leonida, then close out 100% and the platinum.</p>
+    <div id="roadmap-body"></div>
+  </section>
+
+  <section id="view-missables" class="view" hidden>
+    <h2>Missables &amp; watch-outs</h2>
+    <div id="missables-body"></div>
+  </section>
+
+  <section id="view-settings" class="view" hidden>
+    <h2>Settings &amp; data</h2>
+    <div id="settings-body"></div>
+  </section>
+</main>
+
+<footer>
+  <p>Leonida Atlas is an unofficial fan guide. Trophy names, descriptions and grades are the official PlayStation list as published by Exophase and PSNProfiles; every guide is our own advice written from those descriptions. The game released on 2026-11-19, so steps are a plan built from the official descriptions — not yet verified in game. No Rockstar artwork is used; the look is CSS only.</p>
+</footer>
+
+<script type="module" src="js/main.js"></script>
 </body>
 </html>

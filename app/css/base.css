@@ -1,0 +1,155 @@
+/* Leonida Atlas — dusk theme. Deep indigo-navy, warm gold accent, off-white text.
+   Serif display headings (Georgia) with a system sans body. Medal swatches are CSS dots. */
+
+:root {
+  --bg: #14101f;
+  --bg-soft: #1d1730;
+  --panel: #221a3a;
+  --panel-edge: #3a2d5f;
+  --text: #f3eee2;
+  --muted: #b9b0cf;
+  --gold: #e8b34b;
+  --gold-soft: #f5cf7d;
+  --platinum: #d8e1ea;
+  --medal-gold: #d4af5a;
+  --silver: #aeb6bf;
+  --bronze: #c98b5e;
+  --danger: #ff9d7a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #14101f 0%, #191231 55%, #14101f 100%);
+  color: var(--text);
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; font-weight: 700; }
+
+a { color: var(--gold-soft); }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Header */
+#topbar {
+  display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end;
+  justify-content: space-between;
+  padding: 22px 26px 14px;
+  border-bottom: 2px solid var(--gold);
+  background: var(--bg-soft);
+}
+.brand h1 { margin: 0; font-size: 40px; color: var(--gold); letter-spacing: 0.5px; }
+.tagline { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+.progress-box { min-width: 300px; max-width: 420px; flex: 1; }
+.earned-count { margin: 0; font-family: Georgia, serif; font-size: 34px; color: var(--text); }
+.bar { height: 12px; background: #0d0a18; border: 1px solid var(--panel-edge); border-radius: 6px; overflow: hidden; margin: 6px 0; }
+.bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #b9822e, var(--gold)); transition: width 0.25s ease; }
+.grade-counts { margin: 0; color: var(--muted); font-size: 14px; }
+
+/* Tabs */
+#tabs { display: flex; gap: 8px; padding: 12px 26px 0; flex-wrap: wrap; }
+.tab {
+  background: var(--panel); color: var(--text); border: 1px solid var(--panel-edge);
+  border-radius: 8px 8px 0 0; padding: 9px 16px; font-size: 15px; cursor: pointer;
+}
+.tab.is-active { background: var(--gold); color: #1c1430; font-weight: 700; border-color: var(--gold); }
+
+/* Filters */
+#filters {
+  display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+  padding: 12px 26px; background: var(--bg-soft); border-bottom: 1px solid var(--panel-edge);
+}
+#filters[hidden] { display: none; }
+#filters label { color: var(--muted); font-size: 14px; display: flex; gap: 6px; align-items: center; }
+#filters select, #filters input[type="search"] {
+  background: #0d0a18; color: var(--text); border: 1px solid var(--panel-edge);
+  border-radius: 6px; padding: 7px 9px; font-size: 15px;
+}
+.search-label { flex: 1; min-width: 200px; }
+.search-label input { flex: 1; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip {
+  background: transparent; color: var(--muted); border: 1px solid var(--panel-edge);
+  border-radius: 999px; padding: 6px 13px; font-size: 14px; cursor: pointer;
+}
+.chip.is-active { background: var(--gold); color: #1c1430; border-color: var(--gold); font-weight: 700; }
+
+/* Layout */
+main { padding: 18px 26px 30px; }
+.layout { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(300px, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+.note { color: var(--muted); font-size: 14px; }
+
+/* Trophy list */
+.trophy-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.trophy-card {
+  display: flex; gap: 12px; align-items: flex-start;
+  background: var(--panel); border: 1px solid var(--panel-edge); border-radius: 10px;
+  padding: 11px 13px; cursor: pointer; text-align: left; width: 100%; color: var(--text);
+}
+.trophy-card:hover { border-color: var(--gold); }
+.trophy-card.is-selected { border-color: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
+.trophy-card.is-earned { opacity: 0.82; }
+.trophy-card input[type="checkbox"] { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--gold); flex: none; cursor: pointer; }
+.card-main { flex: 1; min-width: 0; }
+.card-name { font-family: Georgia, serif; font-size: 18px; margin: 0; }
+.card-desc { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+.card-meta { margin: 5px 0 0; font-size: 13px; color: var(--muted); display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.medal { display: inline-block; width: 13px; height: 13px; border-radius: 50%; vertical-align: -1px; margin-right: 5px; border: 1px solid rgba(0,0,0,0.45); }
+.medal-platinum { background: var(--platinum); }
+.medal-gold { background: var(--medal-gold); }
+.medal-silver { background: var(--silver); }
+.medal-bronze { background: var(--bronze); }
+.kind-tag { text-transform: capitalize; }
+.watch-flag { color: var(--danger); font-weight: 700; }
+.counter-box { display: flex; gap: 6px; align-items: center; margin-top: 7px; font-size: 14px; }
+.counter-box button {
+  background: #0d0a18; color: var(--gold-soft); border: 1px solid var(--panel-edge);
+  border-radius: 6px; width: 28px; height: 28px; font-size: 16px; cursor: pointer; line-height: 1;
+}
+.counter-hint { color: var(--gold-soft); font-size: 13px; }
+.masked { font-style: italic; color: var(--muted); }
+
+/* Detail pane */
+.detail-pane {
+  background: var(--panel); border: 1px solid var(--panel-edge); border-radius: 10px;
+  padding: 16px 18px; position: sticky; top: 14px;
+}
+.detail-pane h2 { margin: 0 0 4px; font-size: 24px; color: var(--gold-soft); }
+.detail-pane h3 { margin: 16px 0 4px; font-size: 17px; color: var(--gold); }
+.detail-pane p { margin: 5px 0; }
+.detail-desc { color: var(--muted); font-style: italic; }
+.watch-note { border-left: 3px solid var(--danger); padding: 6px 10px; background: #2b1d33; color: #ffd9c9; font-size: 14px; }
+.source-list { margin: 4px 0; padding-left: 18px; font-size: 14px; }
+
+/* Roadmap + missables */
+.stage-block { background: var(--panel); border: 1px solid var(--panel-edge); border-radius: 10px; padding: 10px 14px; margin-bottom: 10px; }
+.stage-block h3 { margin: 0 0 2px; color: var(--gold); font-size: 19px; }
+.stage-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.stage-chip {
+  background: #0d0a18; border: 1px solid var(--panel-edge); border-radius: 999px;
+  padding: 3px 11px; font-size: 14px; color: var(--text); text-decoration: none;
+}
+.stage-chip:hover { border-color: var(--gold); }
+.miss-card { background: var(--panel); border: 1px solid var(--panel-edge); border-left: 4px solid var(--danger); border-radius: 10px; padding: 12px 16px; margin-bottom: 12px; }
+.miss-card h3 { margin: 0 0 4px; font-size: 19px; }
+
+/* Settings */
+.settings-card { background: var(--panel); border: 1px solid var(--panel-edge); border-radius: 10px; padding: 16px 18px; margin-bottom: 14px; max-width: 720px; }
+.settings-card h3 { margin: 0 0 8px; color: var(--gold); }
+.btn {
+  background: var(--gold); color: #1c1430; border: none; border-radius: 7px;
+  padding: 9px 15px; font-size: 15px; font-weight: 700; cursor: pointer; margin-right: 8px;
+}
+.btn.secondary { background: transparent; color: var(--gold-soft); border: 1px solid var(--gold); }
+.btn.danger { background: transparent; color: var(--danger); border: 1px solid var(--danger); }
+.switch-row { display: flex; gap: 10px; align-items: center; font-size: 16px; }
+.switch-row input { width: 20px; height: 20px; accent-color: var(--gold); }
+
+footer { padding: 16px 26px 26px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--panel-edge); }
