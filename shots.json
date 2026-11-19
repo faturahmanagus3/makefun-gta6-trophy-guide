@@ -1,5 +1,1 @@
-[
-  { "file": "1-checklist.jpg", "path": "/", "viewport": { "width": 1280, "height": 800 } },
-  { "file": "2-silver.jpg", "path": "/", "grade": "silver", "viewport": { "width": 1280, "height": 800 } },
-  { "file": "3-bronze.jpg", "path": "/", "grade": "bronze", "scroll": 1400, "viewport": { "width": 1280, "height": 800 } }
-]
+[{"file":"1-checklist.jpg","note":"Checklist with filters visible, progress 13 of 55, and Cunning Stunts selected in the detail pane with its full guide, counter and sources.","path":"/","view":"checklist","viewport":{"height":800,"width":1280}},{"file":"2-roadmap.jpg","note":"Roadmap view showing the four stages to the platinum with per-stage progress.","path":"/","view":"roadmap","viewport":{"height":800,"width":1280}},{"file":"3-missables.jpg","note":"Missables view with the four flagged plan-ahead trophies, their watch notes and the honesty note.","path":"/","view":"missables","viewport":{"height":800,"width":1280}},{"file":"4-spoilers.jpg","note":"Checklist with the spoiler shield ON: unearned story trophies masked beside revealed earned ones.","path":"/","view":"checklist","viewport":{"height":800,"width":1280}}]
